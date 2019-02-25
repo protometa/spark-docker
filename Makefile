@@ -30,7 +30,7 @@ lib/hadoop-3.2.0:
 	rm lib/hadoop-3.2.0.tar.gz lib/KEYS lib/hadoop-3.2.0.tar.gz.asc
 
 # build hadoop 3.2.0 into spark:2.4.0-without-hadoop
-lib/protometa-spark-2.4.0-hadoop-3.2.0.image-digest: lib/protometa-spark-2.4.0-without-hadoop.image-digest
+lib/protometa-spark-2.4.0-hadoop-3.2.0.image-digest: lib/protometa-spark-2.4.0-without-hadoop.image-digest spark-2.4.0-hadoop-3.2.0.Dockerfile
 	docker build . -f spark-2.4.0-hadoop-3.2.0.Dockerfile -t protometa/spark:2.4.0-hadoop-3.2.0
 	docker push protometa/spark:2.4.0-hadoop-3.2.0
 	docker image inspect protometa/spark:2.4.0-hadoop-3.2.0 | jq -r '.[0].RepoDigests[0]' > lib/protometa-spark-2.4.0-hadoop-3.2.0.image-digest
