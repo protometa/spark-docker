@@ -1,3 +1,4 @@
+.PHONY: spark-2.3.2-hadoop-2.7 spark-2.4.0-hadoop-3.2.0
 
 # download and extract spark 2.3.2
 lib/spark-2.3.2-bin-hadoop2.7:
@@ -32,3 +33,6 @@ lib/protometa-spark-2.4.0-hadoop-3.2.0.image-digest: lib/protometa-spark-2.4.0-w
 	docker build . -f spark-2.4.0-hadoop-3.2.0.Dockerfile -t protometa/spark:2.4.0-hadoop-3.2.0
 	docker push protometa/spark:2.4.0-hadoop-3.2.0
 	docker image inspect protometa/spark:2.4.0-hadoop-3.2.0 | jq -r '.[0].RepoDigests[0]' > lib/protometa-spark-2.4.0-hadoop-3.2.0.image-digest
+
+spark-2.3.2-hadoop-2.7: lib/protometa-spark-2.3.2-hadoop-2.7.image-digest
+spark-2.4.0-hadoop-3.2.0: lib/protometa-spark-2.4.0-hadoop-3.2.0.image-digest
