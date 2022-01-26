@@ -1,4 +1,4 @@
-.PHONY: spark-2.3.2-hadoop-2.7 spark-2.4.8-hadoop-3.2.0
+.PHONY: spark-2.3.2-hadoop-2.7 spark-2.4.8-hadoop-3.3.1
 
 # download and extract spark 2.3.2
 lib/spark-2.3.2-bin-hadoop2.7:
@@ -29,10 +29,10 @@ lib/protometa-spark-2.4.8-without-hadoop.image-digest: lib/spark-2.4.8-bin-witho
 	docker image inspect protometa/spark:2.4.8-without-hadoop | jq -r '.[0].RepoDigests[0]' > lib/protometa-spark-2.4.8-without-hadoop.image-digest
 
 # build hadoop 3.2.0 into spark:2.4.8-without-hadoop
-lib/protometa-spark-2.4.8-hadoop-3.2.0.image-digest: lib/protometa-spark-2.4.8-without-hadoop.image-digest spark-2.4.8-hadoop-3.2.0.Dockerfile
-	docker build . -f spark-2.4.8-hadoop-3.2.0.Dockerfile -t protometa/spark:2.4.8-hadoop-3.2.0
-	docker push protometa/spark:2.4.8-hadoop-3.2.0
-	docker image inspect protometa/spark:2.4.8-hadoop-3.2.0 | jq -r '.[0].RepoDigests[0]' > lib/protometa-spark-2.4.8-hadoop-3.2.0.image-digest
+lib/protometa-spark-2.4.8-hadoop-3.3.1.image-digest: lib/protometa-spark-2.4.8-without-hadoop.image-digest spark-2.4.8-hadoop-3.3.1.Dockerfile
+	docker build . -f spark-2.4.8-hadoop-3.3.1.Dockerfile -t protometa/spark:2.4.8-hadoop-3.3.1
+	docker push protometa/spark:2.4.8-hadoop-3.3.1
+	docker image inspect protometa/spark:2.4.8-hadoop-3.3.1 | jq -r '.[0].RepoDigests[0]' > lib/protometa-spark-2.4.8-hadoop-3.3.1.image-digest
 
 spark-2.3.2-hadoop-2.7: lib/protometa-spark-2.3.2-hadoop-2.7.image-digest
-spark-2.4.8-hadoop-3.2.0: lib/protometa-spark-2.4.8-hadoop-3.2.0.image-digest
+spark-2.4.8-hadoop-3.3.1: lib/protometa-spark-2.4.8-hadoop-3.3.1.image-digest
