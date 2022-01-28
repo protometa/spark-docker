@@ -1,6 +1,6 @@
 .PHONY: build
 
-sparkVersion = 3.0.1
+sparkVersion = 3.0.3
 hadoopVersion = 3.3.1
 
 build: lib/protometa-spark-${sparkVersion}-hadoop-${hadoopVersion}.image-digest
