@@ -1,6 +1,6 @@
 .PHONY: build
 
-sparkVersion = 3.2.1
+sparkVersion = 3.0.1
 hadoopVersion = 3.3.1
 
 build: lib/protometa-spark-${sparkVersion}-hadoop-${hadoopVersion}.image-digest
@@ -21,6 +21,6 @@ lib/protometa-spark-${sparkVersion}-without-hadoop.image-digest: lib/spark-${spa
 # download and extract spark
 lib/spark-${sparkVersion}-bin-without-hadoop:
 	mkdir -p lib
-	wget -P lib https://downloads.apache.org/spark/spark-${sparkVersion}/spark-${sparkVersion}-bin-without-hadoop.tgz
+	wget -P lib https://archive.apache.org/dist/spark/spark-${sparkVersion}/spark-${sparkVersion}-bin-without-hadoop.tgz
 	tar -x -C lib -f lib/spark-${sparkVersion}-bin-without-hadoop.tgz
 	rm lib/spark-${sparkVersion}-bin-without-hadoop.tgz
